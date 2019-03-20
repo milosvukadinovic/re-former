@@ -1,20 +1,39 @@
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class ="center">
+<h1> Edit User</h1>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+<%= form_for @user do |f| %>
+
+  <% if @user.errors.any? %>
+    <div class="error">
+      
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      
+      <ul class="error-list">
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
+
     </div>
   <% end %>
-  Username: <%= f.text_field :username, placeholder: 'Your name' %>
-  <br>
-  Email: <%= f.text_field :email, placeholder: 'you@somewhere.com' %>
-  <br>
-  Password: <%= f.password_field :password %>
-  <br>
+ 
+  <p>
+    <%= f.label :username, 'Username:' %> 
+    <%= f.text_field :username, placeholder: 'Your name' %>
+  </p>
+  
+  <p>
+    <%= f.label :email, 'Email:' %>
+    <%= f.text_field :email, placeholder: 'you@somewhere.com' %>
+  </p>
+
+  <p>
+    <%= f.label :password, 'Password:' %>
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
   <%= f.submit 'Update user' %>
+  </p>
 <% end %>
+</div>
